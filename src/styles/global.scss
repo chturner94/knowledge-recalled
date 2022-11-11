@@ -1,0 +1,68 @@
+$red: #5c0000;
+$purple: #54166e;
+$blue: #002564;
+$lightBlue: #566193;
+$green: #3a7a58;
+$parchmentBrown: #cfc2ad;
+$tableYellow: #ede3c7;
+$tableLightYellow: #f4eee0;
+$gold: #e5b55a;
+$brown: #98503c;
+$lightBrown: #a76754;
+$gray: #323232;
+$black: #000003;
+$white: #f5f4f0;
+$uncommon: $brown;
+$rare: $blue;
+$epic: $purple;
+$alignment: $lightBlue;
+$traits: $red;
+
+.alignment {
+    background-color: $alignment;
+    color: $white;
+}
+.common {
+    background-color: $gray;
+    color: $white;
+}
+.uncommon {
+    background-color: $uncommon;
+    color: $white;
+}
+.rare {
+    background-color: $rare;
+    color: $white;
+}
+.epic {
+    background-color: $epic;
+    color: $white;
+}
+.unique {
+    background-color: $epic;
+    color: $white;
+}
+.size {
+    background-color: $red;
+    color: $white;
+}
+.type {
+    background-color: $red;
+    color: $white;
+}
+
+#red {
+    background-color: $red;
+}
+#purple {
+    background-color: $purple;
+}
+#blue {
+    background-color: $blue;
+}
+#lightBlue {
+    background-color: $lightBlue;
+}
+#green {
+    background-color: $green;
+}

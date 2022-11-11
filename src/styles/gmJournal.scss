@@ -1,0 +1,186 @@
+@use 'global' as *;
+
+#applicationWrapper {
+    display : flex;
+}
+#journalTabs {
+    writing-mode: vertical-rl;
+    display: flex;
+}
+.encounterTab {
+    padding: 7.5px;
+    margin: 5px 0;
+    color: $white;
+}
+#journalContent {
+    background-color: $parchmentBrown;
+    padding: 5px;
+}
+.journalHeader {
+
+}
+#focusedCreature {
+    padding: 5px;
+    margin: 5px;
+}
+#scrollableCreatures {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#creatureList {
+    display: flex;
+    flex-direction: row;
+}
+.creatureImg {
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+}
+#scrollWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+}
+#scrollPane {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+}
+.scrollCreatureName {
+    display: block;
+}
+#leftArrow {
+    padding: 5px;
+}
+#rightArrow {
+    padding: 5px;
+}
+#scrollBar {
+    align-self: center;
+    padding: 5px;
+}
+#infoPanes {
+    display: grid;
+    grid-template-areas:
+        "infoAndStatPane commonAndSettings"
+        "immunityWeaknessResistPane commonAndSettings";
+    grid-template-columns: 3fr 2fr;
+}
+#infoAndStatPane {
+    grid-area: infoAndStatPane;
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr);
+    grid-template-rows: minmax(50px, 1fr) minmax(100px, 2fr);
+    grid-template-areas:
+        "creatureName creatureName traitTags traitTags"
+        "acArea fortArea refArea WillArea"
+}
+#acArea {
+    grid-area: acArea;
+}
+#fortArea {
+    grid-area: fortArea;
+}
+#refArea {
+    grid-area: refArea;
+}
+#WillArea {
+    grid-area: WillArea;
+}
+#name {
+    grid-area: creatureName;
+    padding: 2.5px;
+    margin: 2.5px;
+    align-self: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+#traitsWrapper {
+    grid-area: traitTags;
+    align-self: center;
+    justify-self: center;
+}
+.traits {
+    border: $gold 2px solid;
+    padding: 2.5px;
+    margin: 2.5px;
+}
+.acAndSaves {
+    display: grid;
+    width: 100px;
+    height: 50px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    img {
+        align-self: center;
+        justify-self: center;
+
+    }
+
+}
+.statTitle {
+
+}
+.stat{
+    align-self: center;
+    justify-self: center;
+}
+.DC {
+    background-color: $gray;
+    color: $white;
+    align-self: center;
+    justify-self: center;
+
+}
+#immunityWeaknessResistanceAttacksActionsPassivesPane {
+    grid-area: immunityWeaknessResistPane;
+    overflow-y: scroll;
+}
+#immunities {
+
+}
+#weaknesses {
+
+}
+#resistances {
+
+}
+#attacks {
+
+}
+#actions {
+
+}
+#passives {
+
+}
+#commonKnowledgeChecksAndSettingsPane {
+    grid-area: commonAndSettings;
+    align-self: end;
+    overflow-y: scroll;
+}
+#commonKnowledgeChecks {
+
+}
+#settings {
+
+}
+#globalSettingsHeader {
+
+}
+#DCIncrease {
+
+}
+#disableChecks {
+
+}
+.toggleButton {
+
+}
+#tieredDcIncrease {
+
+}
+

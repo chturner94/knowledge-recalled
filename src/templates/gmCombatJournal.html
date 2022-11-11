@@ -1,35 +1,126 @@
-<div id="applicationWrapper">
+<!-- Needed only for pre-usable module development to view in browser. Once usable as a module this can be removed,
+ and we can rely on the gulp file and the module.json to resolve the style sheet dependencies.-->
+
+<link rel="stylesheet" href="../styles/knowledge-recalled.css">
+
+<!-- End dev dependencies block -->
+
+<div id="applicationWrapper" xmlns="http://www.w3.org/1999/html">
     <div id="journalTabs">
-        <div class="encounterTab"></div>
-        <div class="encounterTab"></div>
-        <div class="encounterTab"></div>
-        //...
+        <div id="red" class="encounterTab">Encounter 1</div>
+        <div id="green" class="encounterTab">Encounter 2</div>
+        <div id="blue" class="encounterTab">Encounter 3</div>
+
     </div>
     <div id="journalContent">
-        <div id="focusedCreature">
-            <img src="wireframing/assets/Images/ralldar.1.actor.webp" alt="focus">
-        </div>
-        <div id="scrollableCreatures">
+        <div class="journalHeader">
             <div id="creatureList">
-                <div class="creatureImg"><img src="wireframing/assets/Images/leonis.jpeg" alt="test"></div>
-                <div class="creatureImg"><img src="wireframing/assets/Images/ralldar.1.actor.webp" alt="test2"> </div>
-                <div class="creatureImg"></div>
-                //...
-            </div>
-            <div id="scrollPane">
-                <div id="leftArrow"></div>
-                <div id="scrollBar"></div>
-                <div id="rightArrow"></div>
+            <div id="focusedCreature"><img src="../templates/images/bugBear.png" width="238" height="247" alt="var-replace"></div>
+                <div id="scrollWrapper">
+                <div id="scrollableCreatures">
+                    <div class="creatureImg">
+                        <img src="../templates/images/bloodsiphon.png" width="123" height="124" alt="var-replace">
+                        <span class="scrollCreatureName">Blood Siphon</span>
+                    </div>
+                    <div class="creatureImg">
+                        <img src="../templates/images/unicorn.png" width="123" height="124" alt="var-replace">
+                        <span class="scrollCreatureName">Unicorn</span>
+                    </div>
+                    <div class="creatureImg">
+                        <img src="../templates/images/blank.png" width="123" height="124" alt="var-replace">
+                        <span class="scrollCreatureName">Freznelkesh</span>
+                    </div>
+                    <div class="creatureImg">
+                        <img src="../templates/images/blank.png" width="123" height="124" alt="var-replace">
+                        <span class="scrollCreatureName">Aller Rosk</span>
+                    </div>
+                    <div class="creatureImg">
+                        <img src="../templates/images/blank.png" width="123" height="124" alt="var-replace">
+                        <span class="scrollCreatureName">Creature Name</span>
+                    </div>
+                </div>
+                <div id="scrollPane">
+                    <div id="leftArrow"><img src="../templates/images/leftArrow.png" width="75" alt="svg-replace"></div>
+                    <div id="scrollBar"><img src="../templates/images/scrollBar.png" width="350"alt="svg-replace"></div>
+                    <div id="rightArrow"><img src="../templates/images/rightArrow.png" width="75" alt="svg-replace"></div>
+                </div>
+                    </div>
             </div>
         </div>
+
         <div id="infoPanes">
             <div id="infoAndStatPane">
-
+                <div id="name">Galtzagorri Hunter</div>
+                <div id="traitsWrapper">
+                    <span class="traits alignment">CN</span> <span class="traits common">COMMON</span> <span class="traits size">TINY</span>
+                    <span class="traits type">SPRITE</span> <span class="traits type">FEY</span>
+                </div>
+                <div id="acArea" class="acAndSaves">
+                    <span class="statTitle">AC:</span><span class="stat">17</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img src="images/d20.png" width="15" alt="svg-replace">
+                </div>
+                <div id="fortArea" class="acAndSaves">
+                    <span class="statTitle">Fort:</span><span class="stat">17</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img src="images/d20.png" width="15" alt="svg-replace">
+                </div>
+                <div id="refArea" class="acAndSaves">
+                    <span class="statTitle">Ref:</span><span class="stat">17</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img src="images/d20.png" width="15" alt="svg-replace">
+                </div>
+                <div id="willArea" class="acAndSaves">
+                    <span class="statTitle">Will:</span><span class="stat">17</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img src="images/d20.png" width="15" alt="svg-replace">
+                </div>
             </div>
-            <div id="attacksActionsPassivesPane">
-
+            <div id="immunityWeaknessResistanceAttacksActionsPassivesPane"> <!-- span class=""><img src="images/hidden.png" width="25" alt="svg-replace"> </span> -->
+                <div id="immunities">
+                    <span class="statTitle">Immunities:</span><span class="immunities">none</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                </div>
+                <div id="weaknesses">
+                    <span class="statTitle">Weaknesses:</span><span class="weaknesses">cold iron</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                </div>
+                <div id="resistances">
+                    <span class="statTitle">Resistances:</span><span class="resistances">none</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                </div>
+                <div id="attacks">
+                    <span class="$statTitle">Attacks:</span>
+                    <span class="attacks">galtzagorri hook speak (M)</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="attacks">galtzagorri hook speak (R)</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                </div>
+                <div id="actions">
+                    <span class="statTitle">Actions:</span>
+                    <span class="actions">quick disassemble</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="actions">spear snag</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                </div>
+                <div id="passives">
+                    <span class="statTitle">Passives:</span>
+                    <span class="passives">low-light vision</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="passives">craft anything</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                </div>
             </div>
-            <div id="commonAndSettingsPane">
+            <div id="commonKnowledgeChecksAndSettingsPane">
+                <div id="commonKnowledgeChecks">
+                    <span id="commonSettingsHeader">Common Knowledge Checks:</span>
+                    <span id="lowestSave">Lowest Save | DC: </span>
+                    <span class="DC">16</span><img src="images/hidden.png" width="25" alt="svg-replace"><img src="images/d20.png" width="15" alt="svg-replace">
+                    <span id="creatureAbilities">Creature Abilities | DC: </span>
+                    <span class="DC">16</span><img src="images/hidden.png" width="25" alt="svg-replace"><img src="images/d20.png" width="15" alt="svg-replace">
+                    <div class="toggle">
+                        <button class="toggleButton">Random</button><button class="toggleButton">Attacks</button><button class="toggleButton">Abilities</button>
+                        <button class="toggleButton">Passives</button>
+                    </div>
+                </div>
+                <div id="settings">
+                    <span id="globalSettingsHeader">Global Settings</span>
+                    <span id="DCIncrease">Successive Attempts DC Increase: +</span><div class="DC">2</div>
+                    <span id="disableChecks">Disable when: </span>
+                    <div class="toggle">
+                        <button class="toggleButton">Crit Fails</button>
+                        <button class="toggleButton">Reg. Fails</button>
+                        <button class="toggleButton">Disabled</button>
+                    </div>
+                    <span id="tieredDcIncrease">Tiered DC Increase: Custom +</span><span class="DC">2</span>
+                </div>
 
             </div>
         </div>
@@ -37,5 +128,6 @@
 </div>
 
 <style lang="scss">
+@import "src/styles/global.scss";
 
 </style>
