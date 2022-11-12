@@ -68,12 +68,14 @@
         "infoAndStatPane commonAndSettings"
         "immunityWeaknessResistPane commonAndSettings";
     grid-template-columns: 3fr 2fr;
+    grid-template-rows: min-content min-content;
 }
 #infoAndStatPane {
     grid-area: infoAndStatPane;
     display: grid;
+    padding: 5px;
     grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr);
-    grid-template-rows: minmax(50px, 1fr) minmax(100px, 2fr);
+    grid-template-rows: min-content min-content;
     grid-template-areas:
         "creatureName creatureName traitTags traitTags"
         "acArea fortArea refArea WillArea"
@@ -106,7 +108,7 @@
 .traits {
     border: $gold 2px solid;
     padding: 2.5px;
-    margin: 2.5px;
+    margin: 1px;
 }
 .acAndSaves {
     display: grid;
@@ -122,54 +124,99 @@
 
 }
 .statTitle {
+    font-size: 1.25em;
+    font-weight: bold;
 
 }
 .stat{
     align-self: center;
     justify-self: center;
+    font-size: 1.25em;
 }
 .DC {
     background-color: $gray;
     color: $white;
+    padding: 1.5px;
     align-self: center;
     justify-self: center;
+    font-size: 1.25em;
 
 }
 #immunityWeaknessResistanceAttacksActionsPassivesPane {
     grid-area: immunityWeaknessResistPane;
     overflow-y: scroll;
+    padding: 5px;
 }
 #immunities {
-
+    padding: 5px;
 }
 #weaknesses {
-
+    padding: 5px;
+}
+.weaknesses {
+    border: $gold 2px solid;
+    padding: 2.5px;
+    margin: 2.5px;
 }
 #resistances {
-
+    padding: 5px;
 }
 #attacks {
-
+    padding: 5px;
 }
 #actions {
-
+    padding: 5px;
 }
 #passives {
-
+    padding: 5px;
 }
 #commonKnowledgeChecksAndSettingsPane {
     grid-area: commonAndSettings;
     align-self: end;
     overflow-y: scroll;
 }
+#commonSettingsHeader {
+    padding: 15px 0;
+    font-size: 1.25em;
+    text-align: center;
+    vertical-align: middle;
+}
+#lowestSave {
+    padding: 5px;
+    font-size: 1.25em;
+}
+#abilitiesWrapper {
+    padding:5px;
+    font-size: 1.25em;
+}
+#commonRKToggles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    button {
+
+    }
+}
 #commonKnowledgeChecks {
+    display: flex;
+    flex-direction: column;
+    img {
+        align-self: center;
+        vertical-align: middle;
+        margin: auto;
+        padding: 0 5px;
+    }
 
 }
 #settings {
-
+    display: flex;
+    flex-direction: column;
 }
 #globalSettingsHeader {
-
+    padding: 15px 0;
+    font-size: 1.25em;
+    text-align: center;
+    vertical-align: middle;
 }
 #DCIncrease {
 
@@ -178,9 +225,44 @@
 
 }
 .toggleButton {
-
+    width: 75px;
+    border-radius: 0;
+    border: $gold 2px solid;
+    color: $white;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+.toggles{
+    visibility: hidden;
+}
+.settingsTextBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 #tieredDcIncrease {
 
 }
-
+#DCIncrease {
+    padding: 5px;
+    font-size: 1.25em;
+}
+.settingsToggleEntry {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+#disableChecks {
+    padding: 5px;
+    font-size: 1.25em;
+}
+#tieredDcIncrease {
+    padding: 5px;
+    font-size: 1.25em;
+}
+#pf2eToggle2 {
+    margin: 0 10px;
+}

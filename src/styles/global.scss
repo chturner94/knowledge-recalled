@@ -51,18 +51,39 @@ $traits: $red;
     color: $white;
 }
 
-#red {
+.red {
     background-color: $red;
 }
-#purple {
+.purple {
     background-color: $purple;
 }
-#blue {
+.blue {
     background-color: $blue;
 }
-#lightBlue {
+.lightBlue {
     background-color: $lightBlue;
 }
-#green {
+.green {
     background-color: $green;
+}
+.brown {
+    background-color: $brown;
+}
+.card {
+    border: $gold 2px solid;
+    padding: 2.5px;
+    margin: 1px;
+    color: white;
+    vertical-align: middle;
+}
+.interactiveIcons {
+    padding: 2.5px;
+    vertical-align: middle;
+}
+
+.active {
+    background-color: $red;
+}
+.inactive {
+    background-color: $gray;
 }

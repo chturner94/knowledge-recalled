@@ -7,9 +7,9 @@
 
 <div id="applicationWrapper" xmlns="http://www.w3.org/1999/html">
     <div id="journalTabs">
-        <div id="red" class="encounterTab">Encounter 1</div>
-        <div id="green" class="encounterTab">Encounter 2</div>
-        <div id="blue" class="encounterTab">Encounter 3</div>
+        <div class="encounterTab red">Encounter 1</div>
+        <div class="encounterTab green">Encounter 2</div>
+        <div class="encounterTab blue">Encounter 3</div>
 
     </div>
     <div id="journalContent">
@@ -56,70 +56,88 @@
                     <span class="traits type">SPRITE</span> <span class="traits type">FEY</span>
                 </div>
                 <div id="acArea" class="acAndSaves">
-                    <span class="statTitle">AC:</span><span class="stat">17</span><img src="images/hidden.png" width="25" alt="svg-replace">
-                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img src="images/d20.png" width="15" alt="svg-replace">
+                    <span class="statTitle">AC:</span><span class="stat">17</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img class="interactiveIcons" src="images/d20.png" width="20" alt="svg-replace">
                 </div>
                 <div id="fortArea" class="acAndSaves">
-                    <span class="statTitle">Fort:</span><span class="stat">17</span><img src="images/hidden.png" width="25" alt="svg-replace">
-                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img src="images/d20.png" width="15" alt="svg-replace">
+                    <span class="statTitle">Fort:</span><span class="stat">17</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img class="interactiveIcons" src="images/d20.png" width="20" alt="svg-replace">
                 </div>
                 <div id="refArea" class="acAndSaves">
-                    <span class="statTitle">Ref:</span><span class="stat">17</span><img src="images/hidden.png" width="25" alt="svg-replace">
-                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img src="images/d20.png" width="15" alt="svg-replace">
+                    <span class="statTitle">Ref:</span><span class="stat">17</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img class="interactiveIcons" src="images/d20.png" width="20" alt="svg-replace">
                 </div>
                 <div id="willArea" class="acAndSaves">
-                    <span class="statTitle">Will:</span><span class="stat">17</span><img src="images/hidden.png" width="25" alt="svg-replace">
-                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img src="images/d20.png" width="15" alt="svg-replace">
+                    <span class="statTitle">Will:</span><span class="stat">17</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">DC:</span><span contenteditable="true" class="DC">18</span><img class="interactiveIcons" src="images/d20.png" width="20" alt="svg-replace">
                 </div>
             </div>
             <div id="immunityWeaknessResistanceAttacksActionsPassivesPane"> <!-- span class=""><img src="images/hidden.png" width="25" alt="svg-replace"> </span> -->
                 <div id="immunities">
-                    <span class="statTitle">Immunities:</span><span class="immunities">none</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">Immunities:</span><span class="immunities">none</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
                 </div>
                 <div id="weaknesses">
-                    <span class="statTitle">Weaknesses:</span><span class="weaknesses">cold iron</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">Weaknesses:</span><span class="weaknesses red card">cold iron</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
                 </div>
                 <div id="resistances">
-                    <span class="statTitle">Resistances:</span><span class="resistances">none</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">Resistances:</span><span class="resistances">none</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
                 </div>
                 <div id="attacks">
-                    <span class="$statTitle">Attacks:</span>
-                    <span class="attacks">galtzagorri hook speak (M)</span><img src="images/hidden.png" width="25" alt="svg-replace">
-                    <span class="attacks">galtzagorri hook speak (R)</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="statTitle">Attacks:</span>
+                    <span class="attacks lightBlue card">galtzagorri hook speak (M)</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="attacks lightBlue card">galtzagorri hook speak (R)</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
                 </div>
                 <div id="actions">
                     <span class="statTitle">Actions:</span>
-                    <span class="actions">quick disassemble</span><img src="images/hidden.png" width="25" alt="svg-replace">
-                    <span class="actions">spear snag</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="actions green card">quick disassemble</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="actions green card">spear snag</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
                 </div>
                 <div id="passives">
                     <span class="statTitle">Passives:</span>
-                    <span class="passives">low-light vision</span><img src="images/hidden.png" width="25" alt="svg-replace">
-                    <span class="passives">craft anything</span><img src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="passives brown card">low-light vision</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
+                    <span class="passives brown card">craft anything</span><img class="interactiveIcons" src="images/hidden.png" width="25" alt="svg-replace">
                 </div>
             </div>
             <div id="commonKnowledgeChecksAndSettingsPane">
                 <div id="commonKnowledgeChecks">
-                    <span id="commonSettingsHeader">Common Knowledge Checks:</span>
-                    <span id="lowestSave">Lowest Save | DC: </span>
-                    <span class="DC">16</span><img src="images/hidden.png" width="25" alt="svg-replace"><img src="images/d20.png" width="15" alt="svg-replace">
-                    <span id="creatureAbilities">Creature Abilities | DC: </span>
-                    <span class="DC">16</span><img src="images/hidden.png" width="25" alt="svg-replace"><img src="images/d20.png" width="15" alt="svg-replace">
-                    <div class="toggle">
-                        <button class="toggleButton">Random</button><button class="toggleButton">Attacks</button><button class="toggleButton">Abilities</button>
-                        <button class="toggleButton">Passives</button>
+                    <span id="commonSettingsHeader">Common Knowledge Checks</span>
+                    <div id="lowestSaveWrapper">
+                        <span id="lowestSave">Lowest Save | DC: </span>
+                        <span class="DC">16</span>
+                        <img src="images/d20.png" width="20" alt="svg-replace">
+                        <img src="images/hidden.png" width="25" alt="svg-replace">
+                    </div>
+                    <div id="abilitiesWrapper">
+                        <span id="abilities">Abilities | DC: </span>
+                        <span class="DC">16</span>
+                        <img src="images/d20.png" width="20" alt="svg-replace">
+                        <img src="images/hidden.png" width="25" alt="svg-replace">
+                    </div>
+                    <div id="commonRKToggles" class="toggle">
+                        <label for="randomToggle" class="toggleButton active">Random</label><input class="toggles" name="random" id="randomToggle" type="checkbox">
+                        <label for="attacksToggle" class="toggleButton inactive">Attacks</label><input class="toggles" name="attacks" id="attacksToggle" type="checkbox">
+                        <label for="abilitiesToggle" class="toggleButton inactive">Abilities</label><input class="toggles" name="abilities" id="abilitiesToggle" type="checkbox">
+                        <label for="passivesToggle" class="toggleButton inactive">Passives</label><input class="toggles" name="passives" id="passivesToggle" type="checkbox">
                     </div>
                 </div>
                 <div id="settings">
                     <span id="globalSettingsHeader">Global Settings</span>
-                    <span id="DCIncrease">Successive Attempts DC Increase: +</span><div class="DC">2</div>
-                    <span id="disableChecks">Disable when: </span>
-                    <div class="toggle">
-                        <button class="toggleButton">Crit Fails</button>
-                        <button class="toggleButton">Reg. Fails</button>
-                        <button class="toggleButton">Disabled</button>
+                    <div class="settingsTextBox">
+                        <span id="DCIncrease">Successive Attempts DC Increase: +</span><div class="DC">2</div>
                     </div>
-                    <span id="tieredDcIncrease">Tiered DC Increase: Custom +</span><span class="DC">2</span>
+                    <div class="settingsToggleEntry">
+                        <span id="disableChecks">Disable when: </span>
+                        <div class="toggle">
+                            <button class="toggleButton active">Crit Fails</button>
+                            <button class="toggleButton inactive">Reg. Fails</button>
+                            <button class="toggleButton inactive">Disabled</button>
+                        </div>
+                    </div>
+                    <div class="settingsTextBox">
+                        <span id="tieredDcIncrease">Tiered DC Increase: Custom +</span>
+                        <span class="DC">2</span>
+                        <label id="pf2eToggle2" for="pf2eRulesToggle" class="toggleButton active">PF2e Rules</label><input class="toggles" name="pf2eRules" id="pf2eRulesToggle" type="checkbox">
+                    </div>
                 </div>
 
             </div>
