@@ -24,267 +24,196 @@
 // Import TypeScript modules
 import { registerSettings } from './settings';
 import { preloadTemplates } from './preloadTemplates';
-import { array, string } from "yargs";
+import {array, boolean, string} from 'yargs';
 
 // Initialize module
 Hooks.once('init', async () => {
   console.log('knowledge-recalled | Initializing knowledge-recalled');
 
-  // Assign custom classes and constants here
-  const actor = combatant.actor;
-
-  interface actorInterface {
-    // types
-    // -- description --
-    name: string;
-    actorId: string;
-
-    description: string;
-    profileImg: string;
-    rarity: string;
-    traits: string[];
-    // -- stats --
-    ac: number;
-    fortitude: object;
-    reflex: object;
-    will: object;
-
-    immunities: number;
-    resistance: number
-    weakness: number;
-
-    // -- abilities --
-    attacks: string[];
-    abilities: string[];
-    passives: string[];
-    spells: string[];
+  type statStructure = {
+      value?: number;
+      beforeDC?: number;
+      afterDC?:  number;
+      isVisibleForPlayer: boolean;
   }
 
-  public class actorTemplate implements actorInterface{
-      //let encounters = ui.combat?.combats.map((combat) => { return combat.name });
-      constructor() {
+
+  interface ActorDescription {
+      name: string;
+      actorId: string;
+      description: string;
+      profileImg: string;
+      rarity: string;
+      traits: string[];
+  }
+  interface Stats {
+      ac: statStructure;
+      fortitude: statStructure;
+      reflex: statStructure;
+      will: object;
+      immunities?: number;
+      resistance?: number
+      weakness?: number;
+
+  }
+  interface Abilities {
+      attacks: string[];
+      abilities?: string[];
+      passives?: string[];
+      spells?: string[];
+  }
+
+  class actorTemplate implements ActorDescription, Stats, Abilities {
+
+        name: string;
+        actorId: string;
+        description: string;
+        profileImg: string;
+        rarity: string;
+        traits: string[];
+        ac: statStructure;
+        fortitude: statStructure;
+        reflex: statStructure;
+        will: Object;
+        immunities: number;
+        resistance: number
+        weakness: number;
+        attacks: string[];
+        passiveAbilities: string[];
+        spells: string[];
+
+
+        constructor(actorId: string, actor: object) {
+        //the properties can be found inside ui.combat.combats[arrayId].turns[arrayId]
+        // actorId is at the very top of this and everything else is nested inside of the
+        // actor object.
+            this.name = actor.name
+            this.actorId = actorId;
+            this.description = actor.system.details.publicNotes;
+            this.profileImg =  actor.img;
+            this.rarity =  actor.system.traits.rarity;
+            this.traits = actor.system.traits.value;
+            this.ac =
+                {
+                    value = actor.system.attributes.ac.value;
+                    //beforeDC
+                    //afterDC
+                    isVisibleForPlayer = false;
+                };
+            this.fortitude =
+                {
+                   value = actor.system.saves.fortitude;
+                   //beforeDC
+                    //afterDC
+                    isVisibleForPlayer = false
+                }
+            this.reflex =
+                {
+                    value = actor.system.saves.reflex;
+                    //beforeDC;
+                    //afterDc
+                    //isVisibleForPlayer= false
+                };
+            this.will = actor.system.saves.will;
+
+            //fortitude, reflex, will object attributes
+            //{ ability: 'attr', base: #, breakdown: 'modifier +#', dc: val+10[dc = result], label: 'Reflex', saveDetail: '', slug: 'will',
+            // totalModifier: #, value: #, _modifier: {}
+
+            this.immunities = actor.system.traits.immunity;
+            this.resistance = actor.system.traits.resistance;
+            this.weakness =  actor.system.traits.weakness;
+            this.attacks =  actor.system.actions[0].slug;
+            this.passiveAbilities = actor.passiveAbilities
+            this.spells = actor.spells
+
+
+        }
+
+  }
+  class GMCombatKnowledgeJournal {        //PASS IN UI
+      actorObjectArray: object[] = [];
+      ui: object;
+
+      constructor(ui: object) {
+          this.ui = ui;
       }
 
-    // Constructors
-    //constructor(name: string, description: string, profileImg: string, rarity: string, traits: string[], ac: number,
-    //            fortitude: object, reflex: object, will: object, immunities: number, resistance: number, weakness: number,
-    //            attacks: string[], abilities: string[], passives: string[], spells: string[])
-    //{
+      getActorsFromTheCurrentEncounter(): void {
+          let encounters = ui.combat.combats;
+          for (let encountersCounter = 0; encountersCounter < encounters.length; encountersCounter++) {
+              if (encounters[encountersCounter].isActive) {
+                  this.addActorsToActorObjectArray(encounters[encountersCounter])
+              } else {
+                  console.log('not active; skipping')
+              }
 
-      //the properties can be found inside ui.combat.combats[arrayId].turns[arrayId]
-      // actorId is at the very top of this and everything else is nested inside of the
-      // actor object.
-      name = (): String => this.actor.prototypeToken.name;
-      actorid= (): String => this.actorId;
-      description = (): String => this.actor.system.details.publicNotes;
-      profileImg = (): String => this.actor.img;
-      rarity = (): String => this.actor.system.traits.rarity;
-      traits = (): String[] => this.system.traits.value;
+          }
+      }
+      addActorsToActorObjectArray(encounter: object) {
+          let combatants = encounter.turns;
+          for (let combatantsCounter = 0; combatantsCounter < combatants.length; combatantsCounter++) {
+              if (combatants[combatantsCounter].isNPC) {
+                  let combatant = combatants[combatantsCounter];
+                  let actorId = combatants[combatantsCounter].actorId;
+                  let actor = combatant.actor;
 
-      ac = (): String => this.actor.system.attributes.ac.value;
-      fortitude = (): Object => this.actor.system.saves.fortitude;
-      //{ ability: 'attr', base: #, breakdown: 'modifier +#', dc: val+10[dc = result], label: 'Fortitude', saveDetail: '', slug: 'fortitude',
-      // totalModifier: #, value: #, _modifier: {}
-      reflex = (): Object => this.actor.system.saves.reflex;
-      //{ ability: 'attr', base: #, breakdown: 'modifier +#', dc: val+10[dc = result], label: 'Will', saveDetail: '', slug: 'reflex',
-      // totalModifier: #, value: #, _modifier: {}
-      will = (): Object => this.actor.system.saves.will;
-      //{ ability: 'attr', base: #, breakdown: 'modifier +#', dc: val+10[dc = result], label: 'Reflex', saveDetail: '', slug: 'will',
-      // totalModifier: #, value: #, _modifier: {}
+                  if(this.isDuplicate(actorId)) {
+                      console.log("Duplicated actor")
+                  }
+                  else{
+                      let actorObject = new actorTemplate(actorId, actor);
+                      this.actorObjectArray.push(actorObject);
+                  }
 
-      //immunity
-      immunities = (): String[] => this.actor.system.traits.immunity;
-      //resistance
-      resistance = (): String[] => this.actor.system.traits.resistance;
-      //weakness
-      weakness = (): String[] => this.actor.system.traits.weakness;
-      //attacks
-      attacks = (): String[] => this.actor.system.actions.name;
-      //abilities
+                  //jsonify actorObjectArray
+              } else {
+                  console.log('not an npc; skipping')
+              }
+          }
+      }
+      isDuplicate(actorId: string): boolean {
+          for(let actorCounter = 0; actorCounter <= this.actorObjectArray.length; actorCounter++) {
+              if(actorId == this.actorObjectArray[actorCounter].actorId) {
+                  return true
+              }
+          }
+          return false
+      }
+  }
+  class PlayerJournal implements GMCombatKnowledgeJournal {
+      actorObjectArray: object[] = [];
+     // set
 
-      //passives
-      passives = (): String[] => this.actor.system._itemTypes.action.name;
 
 
-    }
-
-
-
-  // Register custom module settings
+  }
   registerSettings();
-
-  // Preload Handlebars templates
   await preloadTemplates();
 
-  // Register custom sheets (if any)
 });
+
+
 
 // Setup module
 Hooks.once('setup', async () => {
   // Do anything after initialization but before
   // ready
+    let GMJournal = new GMCombatKnowledgeJournal(ui)
+    //let PlayerJournal = new PlayerJournal
 });
 
 // When ready
 Hooks.once('ready', async () => {
   // Do anything once the module is ready
-  class gmCombatKnowledgeJornal {
+    //encounterChecker()
+        //GmJournalObject.getActorsFromTheCurrentEncounter()
+        //GMJournalObject.actorObjectArray
+        //if GMJournalObject is updated
+        //  playerJournal.actorObjectArray = gmJournalObject.actorObjectArray but ONLY SHOW ICON?
+        //if a DC is passed isVisible is set to true this value becomes visible to the players
+        //push data to frontend
 
-    launchWithActiveEncounters({ encounters }: {encounters: any[] }) {
-        //Represents the journal storing active encounters, each item in array represents a tab in the journal.
-        let gmCombatKnowledgeJournal = [];
-        let gmCombatKnowledgeJournalTab = [];
+}
 
-    }
-
-
-
-
-            getCombatants(): void {
-                let encounters = ui.combat.combats;
-
-
-                for (let i = 0; i < encounters.length; i++) {
-                    let encounterArray = [];
-                    let combatantArray = [];
-                    // only add encounters that are active
-                    if (encounters[i].isActive) {
-                        // add each creature to the journal under it's associated encounter
-                        for (let j = 0; j < encounters[i].turns.length; j++) {
-                            // combatants = ui.combat.combats[i].turns (this is the array of each creature in the encounter)
-                            let combatants = encounters[i].turns;
-
-                            // only add creatures that are NPCs.
-                            //addNPCS():
-                            if (combatants[j].isNPC) {
-                                let combatant: any, actor: any, actorTemplate: any, actorId: any, actorName: any,
-                                    actorDescription: any, actorProfileImg: any, actorRarity: any, actorTraits: any,
-                                    actorAc: any, actorFortitude: any, actorReflex: any, actorWill: any,
-                                    actorImmunities: any,
-                                    actorResistance: any, actorWeakness: any, actorAttacks: any,
-                                    actorAbilities: string[],
-                                    actorPassives: any, actorSpells: string[],
-                                    actorObject: {
-                                        actorResistance: any; actorReflex: any; actorWeakness: any; actorAttacks: any;
-                                        actorWill: any; actorPassives: any; actorName: any; actorFortitude: any; actorDescription: any;
-                                        actorAbilities: string[]; actorProfileImg: any; actorId: any; actorRarity: any; actorAc: any;
-                                        actorSpells: string[]; actorImmunities: any; actorTraits: any
-                                    },
-                                    actorObjectArray: any[];
-                                // combatant = ui.combat.combats[i].turns[j] (this is the individual creature in the encounter)
-                                combatant = combatants[j];
-                                // actor = ui.combat.combats[i].turns[j].actor (this is the individual creature's actor)
-                                actor = combatant.actor;
-                                actorTemplate = new actorTemplate(actor);
-                                actorId = combatant.actorId;
-                                actorName = actorTemplate.name;
-                                actorDescription = actorTemplate.description;
-                                actorProfileImg = actorTemplate.profileImg;
-                                actorRarity = actorTemplate.rarity;
-                                actorTraits = actorTemplate.traits;
-                                actorAc = actorTemplate.ac;
-                                actorFortitude = actorTemplate.fortitude;
-                                actorReflex = actorTemplate.reflex;
-                                actorWill = actorTemplate.will;
-                                actorImmunities = actorTemplate.immunities;
-                                actorResistance = actorTemplate.resistance;
-                                actorWeakness = actorTemplate.weakness;
-                                actorAttacks = actorTemplate.attacks;
-                                actorAbilities = actorTemplate.abilities;
-                                actorPassives = actorTemplate.passives;
-                                actorSpells = actorTemplate.spells;
-                                actorObject = {
-                                    actorId: actorId,
-                                    actorName: actorName,
-                                    actorDescription: actorDescription,
-                                    actorProfileImg: actorProfileImg,
-                                    actorRarity: actorRarity,
-                                    actorTraits: actorTraits,
-                                    actorAc: actorAc,
-                                    actorFortitude: actorFortitude,
-                                    actorReflex: actorReflex,
-                                    actorWill: actorWill,
-                                    actorImmunities: actorImmunities,
-                                    actorResistance: actorResistance,
-                                    actorWeakness: actorWeakness,
-                                    actorAttacks: actorAttacks,
-                                    actorAbilities: actorAbilities,
-                                    actorPassives: actorPassives,
-                                    actorSpells: actorSpells
-                                };
-                                actorObjectArray = [];
-
-                                actorObjectArray.push(actorObject);
-
-                                let actorObjectString = JSON.stringify(actorObjectArray);
-                                let actorObjectStringParse = JSON.parse(actorObjectString);
-
-                                let actorObjectStringify = JSON.stringify(actorObjectStringParse);
-
-                                let actorObjectStringifyParse = JSON.parse(actorObjectStringify);
-
-                                let actorObjectStringifyParseString = JSON.stringify(actorObjectStringifyParse);
-
-                                let actorObjectStringifyParseStringParse = JSON.parse(actorObjectStringifyParseString);
-
-                                let actorObjectStringifyParseStringParseString = JSON
-
-                                //adds the newly created object to the journal
-                                // I need to store each pass of this in a new array to be represented as tabs in the journal.
-                                // each tab should represent the encounter[0-x] and each tab should contain the combatants[0-x].
-                                combatantArray.push(actorObjectStringifyParseStringParseString);
-                            } else {
-                                console.log('not an npc; skipping')
-                            }
-                        }
-                    } else {
-                        console.log('not active; skipping')
-                    }
-                    //adds the array of combatants for the encounter to the encounter array
-                    // this should appear as encounterArray[0].combatantArray[0]...
-                    // encounterArray[0].combatantArray[1]... Once finished,
-                    // do the same at eA[1] through all of those combatants.
-                    encounterArray.push(combatantArray);
-                }
-            }
-            }
-
-      //let encounters = ui.combat.combats.filter(combat => combat.active);
-//
-
-  //    let combatants = [];
-      //you can find the NPC TAG under ui.combat.combats[arrayId].turns[arrayId].turns[arrayId].actor.type
-      // type in this case will === "npc".
-    //  for (let i = 0; i < encounterLength; i++) {
-      //  combatants.push(encounters[i].turns);
-     // }
-     // }
-
-    }
-
-// class activePlayer {
-//   const token = turn.token;
-//   const actor = turn.actor ?? (token ? token.actor : null);
-//
-//   if (!actor)
-//     return null;
-// };
-
-//need to cycle or select players whose turn it is
-
-
-//fun createKnowledgeArray() {
-//  const activeCombat = game.combat;
-  //let i = 0;
-  //const activeCombatant = activeCombat.turns[i].actor;
-  //if (activeCombatant.type == "npc") {
-  //  let knowledgeArray = [];
-    //activeCombatant.push(knowledgeArray);
-
-
-  //}
-
-//}
-
-// Add any additional hooks if necessary
 
