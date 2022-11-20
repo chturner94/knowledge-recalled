@@ -30,6 +30,11 @@ import {array, boolean, string} from 'yargs';
 Hooks.once('init', async () => {
   console.log('knowledge-recalled | Initializing knowledge-recalled');
 
+  type actorDescriptionStructure = {
+      value: string | string[];
+      isVisibleForPlayer: boolean;
+  }
+
   type statStructure = {
       value?: number;
       beforeDC?: number;
@@ -39,21 +44,21 @@ Hooks.once('init', async () => {
 
 
   interface ActorDescription {
-      name: string;
-      actorId: string;
-      description: string;
-      profileImg: string;
-      rarity: string;
-      traits: string[];
+      name: actorDescriptionStructure;
+      actorId: actorDescriptionStructure;
+      description: actorDescriptionStructure;
+      profileImg: actorDescriptionStructure;
+      rarity: actorDescriptionStructure;
+      traits: actorDescriptionStructure;
   }
   interface Stats {
       ac: statStructure;
       fortitude: statStructure;
       reflex: statStructure;
-      will: object;
-      immunities?: number;
-      resistance?: number
-      weakness?: number;
+      will: object; //all the others were type number. So check this attribute in foundry
+      immunities?: statStructure;
+      resistance?: statStructure
+      weakness?: statStructure;
 
   }
   interface Abilities {
@@ -65,40 +70,64 @@ Hooks.once('init', async () => {
 
   class actorTemplate implements ActorDescription, Stats, Abilities {
 
-        name: string;
-        actorId: string;
-        description: string;
-        profileImg: string;
-        rarity: string;
-        traits: string[];
+        name: actorDescriptionStructure;
+        actorId: actorDescriptionStructure;
+        description: actorDescriptionStructure;
+        profileImg: actorDescriptionStructure;
+        rarity: actorDescriptionStructure;
+        traits: actorDescriptionStructure;
         ac: statStructure;
         fortitude: statStructure;
         reflex: statStructure;
         will: Object;
-        immunities: number;
-        resistance: number
-        weakness: number;
-        attacks: string[];
-        passiveAbilities: string[];
-        spells: string[];
+        immunities: statStructure;
+        resistance: statStructure
+        weakness: statStructure;
+        //attacks: string[];
+       /// passiveAbilities: string[];
+        //spells: string[];
 
 
         constructor(actorId: string, actor: object) {
         //the properties can be found inside ui.combat.combats[arrayId].turns[arrayId]
         // actorId is at the very top of this and everything else is nested inside of the
         // actor object.
-            this.name = actor.name
-            this.actorId = actorId;
-            this.description = actor.system.details.publicNotes;
-            this.profileImg =  actor.img;
-            this.rarity =  actor.system.traits.rarity;
-            this.traits = actor.system.traits.value;
+            this.name =
+                {
+                    value = actor.name;
+                    isVisibleForPlayer = false;
+                };
+            this.actorId =
+                {
+                    value = actorId;
+                    isVisibleForPlayer = false;
+                };
+            this.description =
+                {
+                    value = actor.system.details.publicNotes;
+                    isVisibleForPlayer = false;
+                };
+            this.profileImg =
+                {
+                    value = actor.img;
+                    isVisibleForPlayer = false;
+                };
+            this.rarity =
+                {
+                    value = actor.system.traits.rarity;
+                    isVisibleForPlayer = false;
+                };
+            this.traits =
+                {
+                    value = actor.system.traits.value;
+                    isVisibleForPlayer = false;
+                };
             this.ac =
                 {
                     value = actor.system.attributes.ac.value;
                     //beforeDC
                     //afterDC
-                    isVisibleForPlayer = false;
+                    isVisibleForPlayer = false
                 };
             this.fortitude =
                 {
@@ -112,20 +141,35 @@ Hooks.once('init', async () => {
                     value = actor.system.saves.reflex;
                     //beforeDC;
                     //afterDc
-                    //isVisibleForPlayer= false
+                    isVisibleForPlayer= false
                 };
             this.will = actor.system.saves.will;
 
-            //fortitude, reflex, will object attributes
-            //{ ability: 'attr', base: #, breakdown: 'modifier +#', dc: val+10[dc = result], label: 'Reflex', saveDetail: '', slug: 'will',
-            // totalModifier: #, value: #, _modifier: {}
 
-            this.immunities = actor.system.traits.immunity;
-            this.resistance = actor.system.traits.resistance;
-            this.weakness =  actor.system.traits.weakness;
-            this.attacks =  actor.system.actions[0].slug;
-            this.passiveAbilities = actor.passiveAbilities
-            this.spells = actor.spells
+            this.immunities =
+                {
+                    value = actor.system.traits.immunity;
+                    //beforeDC;
+                    //afterDc
+                    isVisibleForPlayer= false
+                };
+            this.resistance =
+                {
+                    value = actor.system.traits.resistance;
+                    //beforeDC;
+                    //afterDc
+                    isVisibleForPlayer= false;
+                };
+            this.weakness =
+                {
+                    value = actor.system.traits.weakness;
+                    //beforeDC;
+                    //afterDc
+                    isVisibleForPlayer= false;
+                };
+            //this.attacks =  actor.system.actions[0].slug;
+            //this.passiveAbilities = actor.passiveAbilities
+            //this.spells = actor.spells
 
 
         }
