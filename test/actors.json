@@ -1,0 +1,40 @@
+{
+    "kolyarut": {
+        "name": {
+            "value": "Kolyarut",
+            "isVisibleForPlayers": true
+        },
+        "actorID": "fde2343da35kdka3",
+        "description": {
+            "value": "Kolyarut inevitables are enforcers of bargains and punishers of those who fail to uphold them. Their humanoid shape, ability to disguise themselves among humanoid population, and diplomatic leanings make them the most approacable inevitables, and thus more likely to ally themselves with others. They are among the most talkative of all inevitables, naturally processing a courtly grace and an encyclopedic knowledge of social customs, which they use to assist their efforts in gathering information on their targets or issuing challenges in a legal manner.",
+            "isVisibleForPlayers": true
+        },
+        "profileImage": {
+            "value": "https://2e.aonprd.com/Images/Monsters/Aeon_Kolyarut.png",
+            "isVisibleForPlayers": true
+        },
+        "rarity": {
+            "value": "common",
+            "isVisibleForPlayers": true
+        },
+        "traits": {
+            "value": [
+                "LN",
+                "Medium",
+                "Aeon",
+                "Inevitable",
+                "Monitor"
+            ],
+            "isVisibleForPlayers": true
+        },
+        "ac": {
+            "value": 34,
+            "beforeDC": "32",
+            "afterDC": "32",
+            "isVisibleForPlayers": true
+        },
+        "fort": {
+            ""
+        }
+    }
+}

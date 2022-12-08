@@ -18,6 +18,10 @@ $epic: $purple;
 $alignment: $lightBlue;
 $traits: $red;
 
+* {
+    box-sizing: border-box;
+}
+
 .alignment {
     background-color: $alignment;
     color: $white;
@@ -86,4 +90,55 @@ $traits: $red;
 }
 .inactive {
     background-color: $gray;
+}
+.traitsWrapper {
+    align-self: center;
+    justify-self: center;
+}
+.traits {
+    border: $gold 2px solid;
+    padding: 2.5px;
+    left-margin: 2.5px;
+    font-size: 0.60em;
+}
+.fivePxPadding {
+    padding: 5px;
+}
+.fivePxMargin {
+    margin: 5px;
+}
+.twoColumns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.flexList {
+    display: flex;
+    flex-direction: column;
+}
+.listEntry {
+
+}
+.flexEnd {
+    justify-content: end;
+}
+.bottomBorderTwoPixel {
+    border-bottom: $black 2px solid;
+}
+.paragraphEntry {
+    word-wrap: normal;
+}
+.headingSpacing {
+    margin: 5px;
+}
+.entryHeading3 {
+    font-size: 1.25em;
+}
+.leftMarginFive {
+    margin-left: 5px;
+}
+.responsiveImage {
+    max-width: 100%;
+    height: auto;
 }

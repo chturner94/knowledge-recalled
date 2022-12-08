@@ -63,5 +63,9 @@
   "lint-staged": {
     "*.(ts|js|cjs|mjs)": "eslint --fix",
     "*.(json|yml|scss)": "prettier --write"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "handlebars-webpack-plugin": "^2.2.1"
   }
 }
