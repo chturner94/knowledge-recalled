@@ -1,5 +1,6 @@
 {
     "kolyarut": {
+        "difficultyAdjustment": "normal",
         "name": {
             "value": "Kolyarut",
             "isVisibleForPlayers": true
