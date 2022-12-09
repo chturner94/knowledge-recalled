@@ -34,7 +34,110 @@
             "isVisibleForPlayers": true
         },
         "fort": {
-            ""
+            "value": 23,
+            "beforeDC": 32,
+            "afterDC": 32,
+            "isVisibleForPlayers": true
+        },
+        "ref": {
+            "value": 23,
+            "beforeDC": 32,
+            "afterDC": 32,
+            "isVisibleForPlayers": true
+        },
+        "will": {
+            "value": 23,
+            "beforeDC": 32,
+            "afterDC": 32,
+            "isVisibleForPlayers": true
+        },
+        "immunities": {
+            "value": ["death effects", "disease", "emotion", "poison", "unconscious"],
+            "beforeDC": "32",
+            "afterDC": 32,
+            "isVisibleForPlayers": true
+        },
+        "resistances": {
+            "value": null,
+            "beforeDC": "32",
+            "afterDC": 32,
+            "isVisibleForPlayers": true
+        },
+        "weaknesses": {
+            "value": ["chaotic"],
+            "beforeDC": "32",
+            "afterDC": 32,
+            "isVisibleForPlayers": true
+        },
+        "abilities": {
+            "value": null,
+            "beforeDC": "32",
+            "afterDC": 32,
+            "isVisibleForPlayers": true
+        },
+        "attacks": {
+            "ability": [
+                {
+                    "name": "bastard sword",
+                    "attack": "melee",
+                    "description": null
+                },
+                {
+                    "name": "fist",
+                    "attack": "melee",
+                    "description": null
+                },
+            ]
+        },
+        "passives": {
+            "ability": [
+                {
+                    "name": "true speech",
+                    "description": "A kolyarut can speak with and understand any creature that has a language.",
+                    "isVisibleForPlayers": true
+                },
+                {
+                    "name": "Bonus to detection to detect lies",
+                    "description": "A kolyarut can detect when a creature is lying with proficiency.",
+                    "isVisibleForPlayers": true
+                },
+                {
+                    "name": "divine innate spell casting",
+                    "description": "A kolyarut can innately cast divine spells.",
+                    "isVisibleForPlayers": true
+                }
+            ],
+            "beforeDC": "32",
+            "afterDC": 32,
+            },
+        "spells": {
+            "ability": [
+                {
+                    "name": "command",
+                    "description": "You shout a command that's hard to ignore. You can command the target to approach you, run away (as if it had the fleeing condition), release what it's holding, drop prone, or stand in place. It can't Delay or take any reactions until it has obeyed your command. The effects depend on the target's Will save.",
+                    "isVisibleForPlayers": true
+                },
+                {
+                    "name": "invisibility (self only)",
+                    "description": "Cloaked in illusion, the target becomes invisible. This makes it undetected to all creatures, though the creatures can attempt to find the target, making it hidden to them instead. If the target uses a hostile action, the spell ends after that hostile action is completed.",
+                    "isVisibleForPlayers": true
+                },
+                {
+                    "name": "paralyze",
+                    "description": "You paralyze the target, making it unable to move or speak. The target can still breathe and can attempt to break free of the paralysis. The effects depend on the target's Will save.",
+                    "isVisibleForPlayers": true
+                },
+                {
+                    "name": "illusionary disguise",
+                    "description": "You create an illusion that makes you look like a different creature. The illusion can be as simple as a change in your appearance or as complex as a complete transformation into a different form. You can use this spell to appear as a specific person, a general type of person (such as a soldier, a beggar, or a member of a specific organization), or as an inanimate object. You can make yourself appear as a specific person only if you have seen that person up close—within 30 feet—at least once. You can make yourself appear as a general type of person if you have seen at least three such people up close, or as an inanimate object if you have seen such an object up close or have seen a drawing of it. The illusion lasts for the duration or until you dismiss it (no action required).",
+                    "isVisibleForPlayers": true
+                },
+                {
+                    "name": "discern location",
+                    "description": "You sense the direction to a creature or object you sense within 1 mile. You can sense the direction to a specific creature you have seen within the past day or to a specific object you have seen within the past week. You can also sense the direction to the nearest creature of a specific kind (such as a human or a unicorn) or the nearest object of a specific kind (such as a chair or a key).",
+                    "isVisibleForPlayers": true
+                }
+            ]
+        }
         }
     }
-}
