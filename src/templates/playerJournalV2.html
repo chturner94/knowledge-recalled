@@ -1,42 +1,10 @@
 <link rel="stylesheet" href="../styles/knowledge-recalled.css">
 <script>
     import { array } from "yargs";
+    import { getCreatures } from "../scripts/getData.js";
 
-    let playerJournalEntriesTable = document.getElementById("playerJournalEntriesWrapper").getElementsByTagName("table");
-    let freznelkesh;
-    freznelkesh = {
-        "name": "Freznelkesh",
-        "alignment": "CN",
-        "rarity": "COMMON",
-        "type": "FEY",
-        "traits": ["SPRITE", "TINY"],
-        "ac": 16,
-        "fort": 18,
-        "will": 19,
-        "reflex": 17,
-        "immunities": ["cold", "disease", "piercing"]
-        "weaknesses": ["fire"],
-        "resistances": ["acid"],
-        "attacks": [
-            {
-                "name": "Claw",
-                "type": "melee",
-                "description": "Freznelkesh strikes with it's claw, and on a critical hit" +
-                    " applies the grappled condition."
-            }
-        ],
-        "abilities": [
-            {
-                "name": "Bloodsiphon",
-                "description": "Freznelkesh drains the blood of it's victims, and on a critical hit" +
-                    " applies the grappled condition."
-            }
-        ],
-        "passives": "darkvision",
-        "description": "Freznelkesh is a tiny sprite that is commonly found in the Feywild. It is" +
-            " known for it's ability to drain the blood of it's victims, and it's ability to" +
-            " teleport to a random location within 30 feet of it's current location."
-    };
+
+
     function createTraitsArray(creature) {
         let traitsArray = [];
         traitsArray.push(creature.alignment);

@@ -80,24 +80,31 @@
             "isVisibleForPlayers": true
         },
         "abilities": {
-            "value": null,
+            "ability": [
+                "name": "Inevitable Form",
+                "description": null,
+                "isVisibleForPlayers": true
+            ],
             "beforeDC": "32",
             "afterDC": 32,
-            "isVisibleForPlayers": true
         },
         "attacks": {
-            "ability": [
+            "attack": [
                 {
                     "name": "bastard sword",
                     "attack": "melee",
-                    "description": null
+                    "description": null,
+                    "isVisibleForPlayers": true
                 },
                 {
                     "name": "fist",
                     "attack": "melee",
-                    "description": null
+                    "description": null,
+                    "isVisibleForPlayers": true
                 },
-            ]
+            ],
+            "beforeDC": "32",
+            "afterDC": 32
         },
         "passives": {
             "ability": [
@@ -146,6 +153,22 @@
                     "name": "discern location",
                     "description": "You sense the direction to a creature or object you sense within 1 mile. You can sense the direction to a specific creature you have seen within the past day or to a specific object you have seen within the past week. You can also sense the direction to the nearest creature of a specific kind (such as a human or a unicorn) or the nearest object of a specific kind (such as a chair or a key).",
                     "isVisibleForPlayers": true
+                }
+            ]
+        },
+        "notes": {
+            "GMNotes": {
+                "description": "hidden GM notes are stored here, this should neve be visible to the players",
+                "isVisibleForPlayers": false
+            },
+            "playerNotes": [
+                {
+                    "description": "hidden from other players, but visible to the player with the matching actorID",
+                    "actorID": "j3disikejfjasf"
+                },
+                {
+                    "description": "hidden from other players, but visible to the player with the matching actorID",
+                    "actorID": "j3disikejfjasf"
                 }
             ]
         }

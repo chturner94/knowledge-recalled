@@ -97,3 +97,37 @@ There are various reason you may choose to adjust the DC from it's default value
 | Incredibly Hard | +10        |
 
 These adjustments should be made available as a selection in the UI and stored whenever we return to a creature that the adjustment was made for. Bear in mind it may not be applicable for the adjustment to apply to all of the characters. We either need to associate a player ID to the adjustment to by dynamic or the GM needs to bear in mind that what is being tracked is not player specific.
+
+---
+
+## Example of Algorithms
+
+Creating the DC adjustment mapping
+
+```typescript
+const dcAdjustments = new Map<DCAdjustment, number>();
+dcAdjustments.set("incredibly easy", -10);
+dcAdjustments.set("very easy", -5);
+dcAdjustments.set("easy", -2);
+dcAdjustments.set("normal", 0);
+dcAdjustments.set("hard", +2);
+dcAdjustments.set("very hard", +5);
+dcAdjustments.set("incredibly hard", +10)
+```
+
+create rarity adjustment mapping
+
+```typescript
+function rarityToDCAdjustment(rarity: Rarity = "common"): PositiveDCAdjustment {
+if (rarity === "uncommon") {
+    return "hard";
+} else if (rarity === "rare") {
+    return "very hard";
+} else if (rarity === "unique") {
+    return "incredibly hard";
+} else {
+    return "normal";
+}
+}
+```
+
